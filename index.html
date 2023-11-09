@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Person Directory</title>
+  <style>
+    body { font-family: Arial, sans-serif; }
+  </style>
+</head>
+<body>
+  <h1>Person Info Lookup</h1>
+  <p>Please enter the name of the person you want to lookup:</p>
+  <input id="nameInput" type="text">
+  <button onclick="lookup()">Lookup</button>
+  <p id="result1"></p>
+  <p id="result2"></p>
+  <p id="result3"></p>
+ 
+  <script>
+    let personInfo = [
+      {"name": "Alice", "phoneNumber": "123-456-7890", age: 40, gender: "female", address: '1234 xyz street, Sacramento Ca. 95630'},
+      {"name": "Bob", "phoneNumber": "234-567-8901", age: 30, gender: "male", address: '1234 xyz street, Sacramento Ca. 95630'},
+      {"name": "Charlie", "phoneNumber": "345-678-9012", age: 20, gender: "male", address: '1234 xyz street, Sacramento Ca. 95630'},
+      {"name": "David", "phoneNumber": "456-789-0123", age: 22, gender: "male", address: '1234 xyz street, Sacramento Ca. 95630'},
+      {"name": "Eve", "phoneNumber": "567-890-1234", age: 6, gender: "female", address: '1234 xyz street, Sacramento Ca. 95630'},
+      {"name": "Frank", "phoneNumber": "678-901-2345", age: 15, gender: "male", address: '1234 xyz street, Sacramento Ca. 95630'},
+      {"name": "Grace", "phoneNumber": "789-012-3456", age: 25, gender: "female", address: '1234 xyz street, Sacramento Ca. 95630'},
+      {"name": "Helen", "phoneNumber": "890-123-4567", age: 30, gender: "female", address: '1234 xyz street, Sacramento Ca. 95630'},
+      {"name": "Igor", "phoneNumber": "901-234-5678", age: 27, gender: "male", address: '1234 xyz street, Sacramento Ca. 95630'},
+      {"name": "John", "phoneNumber": "012-345-6789", age: 100,gender: "male", address: '1234 xyz street, Sacramento Ca. 95630'}
+    ];
+
+
+    function lookup() {
+      let name = document.getElementById('nameInput').value;
+      let person = personInfo.find(p => (p.name).toLowerCase() === name.toLowerCase());
+      let resultElement1 = document.getElementById('result1');
+      let resultElement2 = document.getElementById('result2');
+      let resultElement3 = document.getElementById('result3');
+      resultElement1.textContent = "";
+      resultElement2.textContent = "";
+      resultElement3.textContent = "";
+
+
+
+      if (person) {
+        resultElement1.textContent = `${person.name}'s phone number is: ${person.phoneNumber}`;
+        resultElement2.textContent = `${person.gender === "male"? "He": "She"} is ${person.age} years old`;
+        resultElement3.textContent = `${person.gender === "male"? "His": "Her"} address is" ${person.address}.`;
+      } else {
+        resultElement1.textContent = `No phone number found for ${name}.`;
+      }
+    }
+   
+  </script>
+</body>
+</html>
